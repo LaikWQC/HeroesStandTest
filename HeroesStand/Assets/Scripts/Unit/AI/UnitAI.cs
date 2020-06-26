@@ -23,7 +23,7 @@ public class UnitAI : MonoBehaviour
 
     private void OnTargetChanged(object sender, Unit e)
     {
-        if (unit == null)
+        if (e == null)
             unitBehaviour = idleBehaviour;
         else
             unitBehaviour = battleBehaviour;
