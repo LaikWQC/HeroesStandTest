@@ -19,6 +19,6 @@ public class PlayerMovementKeys : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) moveVector.x--;
         if (Input.GetKey(KeyCode.D)) moveVector.x++;
 
-        moveObject.MovementDirection = moveVector.normalized;
+        moveObject.MovementDirectionOverride = moveVector.normalized;
     }
 }

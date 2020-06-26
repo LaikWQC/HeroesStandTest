@@ -137,8 +137,8 @@ GameObject:
   - component: {fileID: 497194401}
   - component: {fileID: 497194395}
   - component: {fileID: 497194402}
-  - component: {fileID: 497194394}
   - component: {fileID: 497194403}
+  - component: {fileID: 497194394}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -155,9 +155,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 497194393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eb94951a2f105445aba79c992b00a30, type: 3}
+  m_Script: {fileID: 11500000, guid: e4dd09ca61c25424b94d51c488e24c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  attackSpeed: 1
+  range: 1.2
 --- !u!114 &497194395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 497194393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4859d8674e2a35b43a30fbc067e6bd99, type: 3}
+  m_Script: {fileID: 11500000, guid: e46198f578133ce43a4e51f12d9c01b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visionRange: {fileID: 7359037353156893470, guid: d87e0f2395288844a943a550d8989914,
@@ -584,7 +587,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378590701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4859d8674e2a35b43a30fbc067e6bd99, type: 3}
+  m_Script: {fileID: 11500000, guid: e46198f578133ce43a4e51f12d9c01b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visionRange: {fileID: 7359037353156893470, guid: d87e0f2395288844a943a550d8989914,

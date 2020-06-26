@@ -5,10 +5,12 @@ using UnityEngine;
 public class BattleBehaviour_MoveToTarget : IUnitBehaviour
 {
     private Unit unit;
+    private IMoveable moveObject;
 
     public BattleBehaviour_MoveToTarget(Unit unit)
     {
         this.unit = unit;
+        moveObject = unit.GetComponent<IMoveable>();
     }
 
     public void UpdateBehavour()
@@ -18,8 +20,8 @@ public class BattleBehaviour_MoveToTarget : IUnitBehaviour
         Vector3 targetDirection = unit.Target.Position - unit.Position;
 
         if (targetDirection.magnitude > unit.AttackRange)
-            unit.MovementDirection = targetDirection.normalized;
+            moveObject.MovementDirectionOverride = targetDirection.normalized;
         else
-            unit.MovementDirection = Vector3.zero;
+            moveObject.MovementDirectionOverride = Vector3.zero;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveToPosition : MonoBehaviour
@@ -12,18 +10,19 @@ public class MoveToPosition : MonoBehaviour
     private void Awake()
     {
         moveObject = GetComponent<IMoveable>();
+        moveObject.MovementPositionChanged += OnPositionChanged;
         moveAction = Stay;
     }
 
-    public void SetPosition(Vector3 movePosition)
+    private void OnPositionChanged(object sender, Vector3? e)
     {
-        this.movePosition = movePosition;
-        moveAction = Move;
-    }
-
-    public void StopMoving()
-    {
-        moveAction = Stay;
+        if (e != null)
+        {
+            movePosition = e.Value;
+            moveAction = Move;
+        }
+        else
+            moveAction = Stay;
     }
         
     void Update()
@@ -36,7 +35,7 @@ public class MoveToPosition : MonoBehaviour
     {
         if (Vector2.Distance(movePosition, transform.position) < moveObject.Speed * Time.fixedDeltaTime)
         {
-            StopMoving();
+            moveAction = Stay;
             moveObject.MovementDirection = Vector2.zero;
         }
         else

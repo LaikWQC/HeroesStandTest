@@ -5,9 +5,8 @@ using System.Linq;
 
 public class EnemyFinder_Any : EnemyFinder
 {
-    public override bool FindEnemy()
+    public override void FindEnemy()
     {
-        target = enemies.FirstOrDefault();
-        return base.FindEnemy();
+        unit.Target = enemies.FirstOrDefault();
     }
 }

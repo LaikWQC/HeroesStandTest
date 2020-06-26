@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class EnemyFinder_Close : EnemyFinder
 {
-    public override bool FindEnemy()
+    public override void FindEnemy()
     {
-        if (enemies.Count == 0)
-            target = null;
-        else
+        Unit target = null;
+        if (enemies.Count != 0)
         {
             float bestDistance = float.MaxValue;
             foreach(Unit enemy in enemies)
@@ -21,6 +20,6 @@ public class EnemyFinder_Close : EnemyFinder
                 }
             }
         }
-        return base.FindEnemy();
+        unit.Target = target;
     }
 }

@@ -9,7 +9,6 @@ public abstract class EnemyFinder : MonoBehaviour
     [SerializeField] VisionRange visionRange = null;
     protected Unit unit;
     protected List<Unit> enemies;
-    protected Unit target;
 
     private void Awake()
     {
@@ -34,13 +33,5 @@ public abstract class EnemyFinder : MonoBehaviour
             enemies.Remove(e);
     }
 
-    public virtual bool FindEnemy()
-    {
-        if (target != null)
-        {
-            unit.Target = target;
-            return true;
-        }
-        return false;
-    }
+    public abstract void FindEnemy();
 }

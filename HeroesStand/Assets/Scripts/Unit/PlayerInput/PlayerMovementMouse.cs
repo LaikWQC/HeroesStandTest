@@ -10,7 +10,7 @@ public class PlayerMovementMouse : MonoBehaviour
         {
             Vector3 movePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             movePosition.z = 0;
-            GetComponent<MoveToPosition>()?.SetPosition(movePosition);
+            GetComponent<IMoveable>().MovementPosition = movePosition;
         }        
     }
 }

@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class IdleBehaviour_MoveStraight : IUnitBehaviour
 {
-    private Unit unit;
+    private IMoveable moveObject;
     private EnemyFinder enemyFinder;
     private Vector3 moveDirection;
 
     public IdleBehaviour_MoveStraight(Unit unit, Vector3 moveDirection)
     {
-        this.unit = unit;
+        moveObject = unit.GetComponent<IMoveable>();
         enemyFinder = unit.GetComponent<EnemyFinder>();
-        this.moveDirection = moveDirection;
+        this.moveDirection = moveDirection.normalized;
     }
 
     public void UpdateBehavour()
     {
-        if (enemyFinder.FindEnemy())
-            unit.MovementDirection = Vector3.zero;
-        else
-            unit.MovementDirection = moveDirection.normalized;
+        enemyFinder.FindEnemy();
+        
+        moveObject.MovementDirectionOverride = moveDirection;
     }
 }

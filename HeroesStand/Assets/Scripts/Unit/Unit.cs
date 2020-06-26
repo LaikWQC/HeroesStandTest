@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour, IMoveable
     [SerializeField] [Range(0.0f, 5.0f)] private float speed = 2.0f;
     [SerializeField] private float visionRadius = 4.0f;
     private Vector3 movementDirection;
+    private Vector3? movementPosition;
     private float? attackRange;
     private Unit target;
 
@@ -46,8 +47,34 @@ public class Unit : MonoBehaviour, IMoveable
         get => movementDirection;
         set
         {
-            movementDirection = value;
-            MovementDirectionChanged?.Invoke(this, value);
+            if(movementDirection!=value)
+            {
+                movementDirection = value;
+                MovementDirectionChanged?.Invoke(this, value);
+            }            
+        }
+    }
+
+    public Vector3 MovementDirectionOverride
+    {
+        get => movementDirection;
+        set
+        {
+            MovementDirection = value;
+            MovementPosition = null;
+        }
+    }
+
+    public Vector3? MovementPosition
+    {
+        get => movementPosition;
+        set
+        {
+            if (movementPosition != value)
+            {
+                movementPosition = value;
+                MovementPositionChanged?.Invoke(this, value);
+            }            
         }
     }
 
@@ -70,5 +97,6 @@ public class Unit : MonoBehaviour, IMoveable
 
     public event EventHandler<Unit> TargetChanged;
     public event EventHandler<Vector3> MovementDirectionChanged;
+    public event EventHandler<Vector3?> MovementPositionChanged;
     public event EventHandler Died;
 }
