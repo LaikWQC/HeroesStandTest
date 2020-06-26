@@ -10,7 +10,7 @@ public class MoveTransform : MonoBehaviour
     private void Awake()
     {
         moveObject = GetComponent<IMoveable>();
-        moveObject.OnMovementDirectionChanged += (sender, direction) => SetVelocity(direction);
+        moveObject.MovementDirectionChanged += (sender, direction) => SetVelocity(direction);
     }
 
     public void SetVelocity(Vector3 direction)

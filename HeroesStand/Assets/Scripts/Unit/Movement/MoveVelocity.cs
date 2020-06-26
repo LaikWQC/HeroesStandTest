@@ -13,7 +13,7 @@ public class MoveVelocity : MonoBehaviour
     {
         rg = GetComponent<Rigidbody2D>();
         moveObject = GetComponent<IMoveable>();
-        moveObject.OnMovementDirectionChanged += (sender, direction) => SetVelocity(direction);
+        moveObject.MovementDirectionChanged += (sender, direction) => SetVelocity(direction);
     }
 
     public void SetVelocity(Vector3 direction)

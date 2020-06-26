@@ -7,5 +7,5 @@ public interface IMoveable
 {
     Vector3 MovementDirection { get; set; }
     float Speed { get; }
-    event EventHandler<Vector3> OnMovementDirectionChanged;
+    event EventHandler<Vector3> MovementDirectionChanged;
 }
