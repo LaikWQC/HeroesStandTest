@@ -23,12 +23,12 @@ public class Unit : MonoBehaviour
             attackRange = range;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Unit damageDealer)
     {
         if(currentHp > 0)
         {
             currentHp -= damage;
-            HpChanged?.Invoke(this, currentHp);
+            HpChanged?.Invoke(this, new EventArguments.HPChangedArgs() { CurrentHp = currentHp, DamageDealer = damageDealer });
             if (currentHp <= 0)
                 Die();
         }        
@@ -60,6 +60,6 @@ public class Unit : MonoBehaviour
     public float CurrentHp => currentHp;
 
     public event EventHandler<Unit> TargetChanged;
-    public event EventHandler<float> HpChanged;
-    public event EventHandler Died;
+    public event EventHandler<EventArguments.HPChangedArgs> HpChanged;
+    public event EventHandler Died;    
 }

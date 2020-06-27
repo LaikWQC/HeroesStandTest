@@ -7,11 +7,12 @@ public class Attack_NoAnimation : MonoBehaviour
     [SerializeField] private float range = 1.2f;
     private float attackDelay;
     private Unit target;
+    private Unit unit;
     private float beforeNextAttack = 0.0f;
 
     private void Awake()
     {
-        Unit unit = GetComponent<Unit>();
+        unit = GetComponent<Unit>();
         unit.TargetChanged += OnTargetChanged;
         unit.SetAttackRange(range);
 
@@ -32,7 +33,7 @@ public class Attack_NoAnimation : MonoBehaviour
         {
             if(Vector2.Distance(target.Position, transform.position) <= range)
             {
-                target.TakeDamage(damage);
+                target.TakeDamage(damage, unit);
                 beforeNextAttack = attackDelay;
             }
         }

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HPIndicator : MonoBehaviour
 {
     private Unit unit;
-    [SerializeField] private Transform Bar;
+    [SerializeField] private Transform Fill = null;
 
     private void Awake()
     {
@@ -11,9 +12,8 @@ public class HPIndicator : MonoBehaviour
         unit.HpChanged += OnHpChanged;
     }
 
-    private void OnHpChanged(object sender, float e)
+    private void OnHpChanged(object sender, EventArguments.HPChangedArgs e)
     {
-        if (e < 0) e = 0;
-        Bar.localScale = new Vector3(e / unit.MaxHp, 1f);
+        Fill.localScale = new Vector3(Mathf.Clamp(e.CurrentHp / unit.MaxHp, 0, 1), 1f);
     }
 }
