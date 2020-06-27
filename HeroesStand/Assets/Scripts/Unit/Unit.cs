@@ -30,13 +30,13 @@ public class Unit : MonoBehaviour
             currentHp -= damage;
             HpChanged?.Invoke(this, new EventArguments.HPChangedArgs() { CurrentHp = currentHp, DamageDealer = damageDealer });
             if (currentHp <= 0)
-                Die();
+                Die(damageDealer);
         }        
     }
 
-    private void Die()
+    private void Die(Unit killer)
     {
-        Died?.Invoke(this, EventArgs.Empty);
+        Died?.Invoke(this, killer);
         Destroy(gameObject);
     }
 
@@ -61,5 +61,5 @@ public class Unit : MonoBehaviour
 
     public event EventHandler<Unit> TargetChanged;
     public event EventHandler<EventArguments.HPChangedArgs> HpChanged;
-    public event EventHandler Died;    
+    public event EventHandler<Unit> Died;    
 }
