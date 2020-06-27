@@ -28,6 +28,7 @@ public class Unit : MonoBehaviour
         if(currentHp > 0)
         {
             currentHp -= damage;
+            HpChanged?.Invoke(this, currentHp);
             if (currentHp <= 0)
                 Die();
         }        
@@ -55,7 +56,10 @@ public class Unit : MonoBehaviour
     public UnitType Type => type;
     public Vector3 Position => transform.position;
     public float AttackRange => attackRange ?? 1.5f;
+    public float MaxHp => maxHp;
+    public float CurrentHp => currentHp;
 
     public event EventHandler<Unit> TargetChanged;
+    public event EventHandler<float> HpChanged;
     public event EventHandler Died;
 }
