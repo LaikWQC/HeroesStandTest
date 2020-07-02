@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class MoveBase : MonoBehaviour, IMoveable
 {
-    private Unit unit;
+    private ISpeed speedSource;
 
     private void Awake()
     {
-        unit = GetComponent<Unit>();
+        speedSource = GetComponent<ISpeed>();
     }
 
     private Vector3 movementDirection;
@@ -49,7 +49,7 @@ public class MoveBase : MonoBehaviour, IMoveable
         }
     }
 
-    public float Speed => unit.Speed;
+    public float Speed => speedSource.Speed;
 
     public event EventHandler<Vector3> MovementDirectionChanged;
     public event EventHandler<Vector3?> MovementPositionChanged;

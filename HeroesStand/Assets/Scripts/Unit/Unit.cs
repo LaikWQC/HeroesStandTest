@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MoveBase))]
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour, ISpeed
 {
     [SerializeField] private UnitType type = UnitType.Enemy;
     private float currentHp;

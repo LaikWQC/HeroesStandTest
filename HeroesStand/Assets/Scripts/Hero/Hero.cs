@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    [SerializeField] private string heroName = null;
     void Start()
     {
-        GameManager.Inst.HeroSubscribe(GetComponent<Unit>());
+        GameManager.Inst.HeroSubscribe(GetComponent<Unit>(), heroName);
     }
 }

@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
             heroes[unit].Exp += exp;
     }
 
-    public void HeroSubscribe(Unit unit)
+    public void HeroSubscribe(Unit unit, string name)
     {
-        heroes.Add(unit, new HeroGlobalState());
+        heroes.Add(unit, new HeroGlobalState(name));
         unit.Died += (obj, e) => heroes[unit].IsAlive = false;
     }
 
