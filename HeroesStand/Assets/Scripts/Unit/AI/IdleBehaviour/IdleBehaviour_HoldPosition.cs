@@ -1,22 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class IdleBehaviour_HoldPosition : IUnitBehaviour
+public class IdleBehaviour_HoldPosition : IdleBehaviour
 {
     private IMoveable moveObject;
-    private IEnemyFinder enemyFinder;
     private Vector3 startingPosition;
 
-    public IdleBehaviour_HoldPosition(Unit unit)
+    protected override void Awake()
     {
-        moveObject = unit.GetComponent<IMoveable>();
-        startingPosition = unit.Position;
-        enemyFinder = unit.GetComponentInChildren<IEnemyFinder>();
+        base.Awake();
+        moveObject = GetComponentInParent<IMoveable>();
+        startingPosition = transform.position;
     }
 
-    public void UpdateBehavour()
+    protected override void OnTargetChanged(object sender, Unit e)
     {
-        enemyFinder.FindEnemy();
-
-        moveObject.MovementPosition = startingPosition;
+        base.OnTargetChanged(sender, e);
+        if(e == null)
+        {
+            moveObject.MovementPosition = startingPosition;
+        }
     }
 }

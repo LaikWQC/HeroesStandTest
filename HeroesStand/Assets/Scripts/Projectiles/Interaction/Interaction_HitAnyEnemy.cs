@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class Interaction_HitAnyEnemy : MonoBehaviour
 {
-    private Missile missile;
+    private Projectile projectile;
     private void Awake()
     {
-        missile = GetComponent<Missile>();
-        missile.TargetHitted += OnTargetHitted;
+        projectile = GetComponent<Projectile>();
+        projectile.TargetHitted += OnTargetHitted;
     }
 
     private void OnTargetHitted(object sender, Unit e)
     {
-        if(e.Type != missile.Unit.Type)
+        if(e.Type != projectile.Unit.Type)
         {
-            e.TakeDamage(missile.Damage, missile.Unit);
+            e.TakeDamage(projectile.Damage, projectile.Unit);
             Destroy(gameObject);
         }
     }

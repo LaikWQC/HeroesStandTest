@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Navigator_MoveInDirection : MonoBehaviour
 {
-    private Missile missile;
+    private Projectile projectile;
     private void Awake()
     {
-        missile = GetComponent<Missile>();
-        missile.SetupCompleted += OnSetupComplited;
+        projectile = GetComponent<Projectile>();
+        projectile.SetupCompleted += OnSetupComplited;
     }
 
     private void OnSetupComplited(object sender, EventArgs e)
     {
-        GetComponent<IMoveable>().MovementDirection = (missile.Target.Position - transform.position).normalized;
+        GetComponent<IMoveable>().MovementDirection = (projectile.Target.Position - transform.position).normalized;
     }
 }

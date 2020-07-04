@@ -1,22 +1,40 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class IdleBehaviour_MoveStraight : IUnitBehaviour
+public class IdleBehaviour_MoveStraight : IdleBehaviour
 {
     private IMoveable moveObject;
-    private IEnemyFinder enemyFinder;
-    private Vector3 moveDirection;
+    [SerializeField] private MoveDirection moveDirection = MoveDirection.None;
+    private Vector3 moveVector;
 
-    public IdleBehaviour_MoveStraight(Unit unit, Vector3 moveDirection)
+    protected override void Awake()
     {
-        moveObject = unit.GetComponent<IMoveable>();
-        enemyFinder = unit.GetComponentInChildren<IEnemyFinder>();
-        this.moveDirection = moveDirection.normalized;
+        base.Awake();
+        moveObject = GetComponentInParent<IMoveable>();
+        switch(moveDirection)
+        {
+            case MoveDirection.Up:
+                moveVector = Vector2.up;
+                break;
+            case MoveDirection.Down:
+                moveVector = Vector2.down;
+                break;
+            case MoveDirection.Left:
+                moveVector = Vector2.left;
+                break;
+            case MoveDirection.Right:
+                moveVector = Vector2.right;
+                break;
+            case MoveDirection.None:
+            default:
+                moveVector = Vector2.zero;
+                break;
+        }
     }
 
-    public void UpdateBehavour()
+    protected override void Update()
     {
-        enemyFinder.FindEnemy();
-        
-        moveObject.MovementDirectionOverride = moveDirection;
+        base.Update();
+        moveObject.MovementDirection = moveVector;
     }
 }
