@@ -1178,6 +1178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1831425224}
   - component: {fileID: 1831425225}
+  - component: {fileID: 1831425227}
+  - component: {fileID: 1831425226}
   m_Layer: 0
   m_Name: Melee_attack
   m_TagString: Untagged
@@ -1214,6 +1216,30 @@ MonoBehaviour:
   damage: 5
   attackSpeed: 2
   range: 1.2
+--- !u!114 &1831425226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831425223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd1c9d778c7c5c439a7e2afdb812079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1831425227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831425223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ae2f577339394296ef863a4272554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1906876891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906876892}
   - component: {fileID: 1906876894}
+  - component: {fileID: 1906876895}
   - component: {fileID: 1906876893}
   m_Layer: 0
   m_Name: SlimeAttack
@@ -1275,6 +1302,18 @@ MonoBehaviour:
   damage: 5
   attackSpeed: 1
   range: 2.5
+--- !u!114 &1906876895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906876891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ae2f577339394296ef863a4272554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1956484262
 GameObject:
   m_ObjectHideFlags: 0

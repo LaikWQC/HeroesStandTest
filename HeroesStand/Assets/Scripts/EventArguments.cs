@@ -10,4 +10,18 @@ public class EventArguments
         public float CurrentHp;
         public Unit DamageDealer;
     }
+
+    public class TargetForAttackArgs : EventArgs
+    {
+        public TargetForAttackArgs(Unit unit, Unit target, float damage)
+        {
+            Unit = unit;
+            Target = target;
+            Damage = damage;
+        }
+
+        public Unit Unit;
+        public Unit Target;
+        public float Damage;
+    }
 }
