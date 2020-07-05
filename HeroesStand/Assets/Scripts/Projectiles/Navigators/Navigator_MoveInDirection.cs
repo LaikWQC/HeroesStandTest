@@ -12,8 +12,8 @@ public class Navigator_MoveInDirection : MonoBehaviour
         projectile.SetupCompleted += OnSetupComplited;
     }
 
-    private void OnSetupComplited(object sender, EventArgs e)
+    private void OnSetupComplited(object sender, Unit target)
     {
-        GetComponent<IMoveable>().MovementDirection = (projectile.Target.Position - transform.position).normalized;
+        GetComponent<IMoveable>().MovementDirection = (target.Position - transform.position).normalized;
     }
 }

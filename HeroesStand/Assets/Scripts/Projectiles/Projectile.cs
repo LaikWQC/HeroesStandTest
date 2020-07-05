@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour, ISpeed
         this.target = target;
         this.damage = damage;
 
-        SetupCompleted?.Invoke(this, EventArgs.Empty);
+        SetupCompleted?.Invoke(this, target);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,15 +24,16 @@ public class Projectile : MonoBehaviour, ISpeed
         Unit hitTarget = collision.GetComponent<Unit>();
         if (hitTarget != null)
         {
-            TargetHitted?.Invoke(this, hitTarget);
+            if (hitTarget == target)
+                ThisTargetHitted?.Invoke(this, new EventArguments.TargetForAttackArgs(unit, hitTarget, damage));
+            else
+                AnotherTargetHitted?.Invoke(this, new EventArguments.TargetForAttackArgs(unit, hitTarget, damage));
         }
     }
 
     public float Speed => projectileSpeed;
-    public Unit Target => target;
-    public Unit Unit => unit;
-    public float Damage => damage;
 
-    public event EventHandler SetupCompleted;
-    public event EventHandler<Unit> TargetHitted;
+    public event EventHandler<Unit> SetupCompleted;
+    public event EventHandler<EventArguments.TargetForAttackArgs> ThisTargetHitted;
+    public event EventHandler<EventArguments.TargetForAttackArgs> AnotherTargetHitted;
 }
