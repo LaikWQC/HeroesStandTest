@@ -14,6 +14,9 @@ public class Navigator_MoveInDirection : MonoBehaviour
 
     private void OnSetupComplited(object sender, Unit target)
     {
-        GetComponent<IMoveable>().MovementDirection = (target.Position - transform.position).normalized;
+        Vector3 direction = target.Position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        GetComponent<IMoveable>().MovementDirection = direction.normalized;
     }
 }

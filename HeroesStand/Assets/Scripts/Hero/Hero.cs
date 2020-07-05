@@ -8,5 +8,6 @@ public class Hero : MonoBehaviour
     void Start()
     {
         GameManager.Inst.HeroSubscribe(GetComponent<Unit>(), heroName);
+        gameObject.name = heroName;
     }
 }

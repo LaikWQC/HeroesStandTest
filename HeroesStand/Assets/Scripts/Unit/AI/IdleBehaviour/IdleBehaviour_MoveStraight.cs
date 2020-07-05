@@ -11,7 +11,13 @@ public class IdleBehaviour_MoveStraight : IdleBehaviour
     {
         base.Awake();
         moveObject = GetComponentInParent<IMoveable>();
-        switch(moveDirection)
+        SetMoveVector();
+        DoWork += MoveStraight;
+    }
+
+    private void SetMoveVector()
+    {
+        switch (moveDirection)
         {
             case MoveDirection.Up:
                 moveVector = Vector2.up;
@@ -32,9 +38,8 @@ public class IdleBehaviour_MoveStraight : IdleBehaviour
         }
     }
 
-    protected override void Update()
+    private void MoveStraight()
     {
-        base.Update();
         moveObject.MovementDirection = moveVector;
     }
 }

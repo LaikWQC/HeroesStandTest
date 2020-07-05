@@ -42,6 +42,7 @@ public class ExpRewarding : MonoBehaviour
 
     private void Reward(float exp, Unit damageDealer)
     {
-        damageDealer.GetComponent<ExpCollecting>()?.GrantExp(exp);
+        if (damageDealer != null)
+            damageDealer.GetComponent<ExpCollecting>()?.GrantExp(exp);
     }
 }

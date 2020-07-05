@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour, ISpeed
         if (hitTarget != null)
         {
             if (hitTarget == target)
-                ThisTargetHitted?.Invoke(this, new EventArguments.TargetForAttackArgs(unit, hitTarget, damage));
+                MainTargetHitted?.Invoke(this, new EventArguments.TargetForAttackArgs(unit, hitTarget, damage));
             else
                 AnotherTargetHitted?.Invoke(this, new EventArguments.TargetForAttackArgs(unit, hitTarget, damage));
         }
@@ -34,6 +34,6 @@ public class Projectile : MonoBehaviour, ISpeed
     public float Speed => projectileSpeed;
 
     public event EventHandler<Unit> SetupCompleted;
-    public event EventHandler<EventArguments.TargetForAttackArgs> ThisTargetHitted;
+    public event EventHandler<EventArguments.TargetForAttackArgs> MainTargetHitted;
     public event EventHandler<EventArguments.TargetForAttackArgs> AnotherTargetHitted;
 }

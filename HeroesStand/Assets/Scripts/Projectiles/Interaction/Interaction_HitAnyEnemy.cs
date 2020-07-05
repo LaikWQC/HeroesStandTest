@@ -8,7 +8,7 @@ public class Interaction_HitAnyEnemy : MonoBehaviour
     private void Awake()
     {
         Projectile projectile = GetComponent<Projectile>();
-        projectile.ThisTargetHitted += OnTargetHitted;
+        projectile.MainTargetHitted += OnTargetHitted;
         projectile.AnotherTargetHitted += OnTargetHitted;
     }
 

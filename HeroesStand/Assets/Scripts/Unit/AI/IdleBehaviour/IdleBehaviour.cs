@@ -14,26 +14,28 @@ public abstract class IdleBehaviour : MonoBehaviour
         unit.TargetChanged += OnTargetChanged;
 
         DoWork = SearchForEnemy;
+        ActionOnUpdate = DoWork;
     }
 
     protected virtual void OnTargetChanged(object sender, Unit e)
     {
         if (e == null)
         {
-            DoWork = SearchForEnemy;
+            ActionOnUpdate = DoWork;
         }
         else
         {
-            DoWork = DoNothing;
+            ActionOnUpdate = DoNothing;
         }
     }
 
-    virtual protected void Update()
+    void Update()
     {
-        DoWork();
+        ActionOnUpdate();
     }
 
-    private Action DoWork;
+    private Action ActionOnUpdate { get; set; }
+    protected Action DoWork { get; set; }
 
     private void DoNothing() { }
     private void SearchForEnemy()
